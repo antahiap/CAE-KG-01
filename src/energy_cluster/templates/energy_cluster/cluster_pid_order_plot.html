@@ -1,0 +1,115 @@
+{% load static %}
+{% static "" as baseUrl %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+
+    <meta charset="utf-8">
+    <title>Enrgy Cluster</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  </head>
+  <body>
+    <h1></h1>
+    <!-- <img src="{{ baseUrl }}/{{ oem }}/media/20001100_all_part_iso.jpeg" alt="Italian Trulli"> -->
+
+    <!-- <div class="col-md-12">{{plot|safe}}</div> -->
+    <div id="myDiv" style="width: 100%, height:100%"><!-- Plotly chart will be drawn inside this DIV --></div>
+
+    <form id="foo">
+    <div class='selectGroup'>
+        <input name="picOpt" value="_all_part_iso.jpeg" type="radio" checked="checked">Iso</input>
+        <input name="picOpt" value="_all_part_top.jpeg" type="radio">Top</input>
+        <input name="picOpt" value=".jpeg" type="radio">Part View</input>
+
+    </div>
+
+
+        </input>
+    </form>
+
+
+    <script type="text/javascript">
+
+    function myFunction() {
+      var x = document.getElementById("myRadio").value;
+      document.getElementById("demo").innerHTML = x;
+      }
+      var data_list = [];
+      var myPlot = document.getElementById('myDiv');
+      // var d3 = Plotly.d3;
+      var N = 4;
+      var nameL = {{ run_list|safe }};
+      var yL = {{ y }};
+      var ystr = {{ ystr|safe }};
+
+      var xL = [];
+      var ytick = [];
+
+      for(var i=1; i < yL[0].length+1; i++){xL.push(i)};
+      for(var i=0; i < ystr.length; i++){ytick.push(i)};
+
+      // for(var i=0; i < 2; i++){
+      for(var i=0; i < nameL.length; i++){
+        var data = {
+              x: xL,
+              y: yL[i],
+              type:'scatter',
+              text:ystr[yL[i]],
+              name:nameL[i],
+              mode: 'lines+markers',
+              hovertemplate: '<b>%{y}</b><br>'
+            };
+
+        data_list.push(data);
+      };
+
+      // data_list = [, data]
+      layout = {
+        width: window.innerWidth * 1,
+        height: window.innerHeight * 1,
+        hovermode:'closest',
+        title:'Energy Absorbtion Order',
+        yaxis:{
+          tickmode: "array",
+          tickvals: ytick,
+          ticktext: ystr
+        }
+      };
+
+      Plotly.newPlot('myDiv', data_list, layout);
+
+    myPlot.on('plotly_hover', function(data){
+      var opt = document.querySelector('input[name="picOpt"]:checked').value;
+        data.points.map(function(d){
+          image_location = '{{ baseUrl }}/{{ oem }}/media/'+ ystr[d.y] + opt ;
+          var img = {
+            // location of image
+            source: image_location,
+            // top-left corner
+            x: 0,
+            y: 1,
+            sizex: 0.5,
+            sizey: 0.5,
+            xref: 'paper',
+            yref: 'paper'
+        };
+        // show image and annotation
+        Plotly.relayout(myDiv, {
+          images: [img],
+          text: 'test'
+        });
+        });
+      })
+
+      .on('plotly_unhover', function(data){
+        Plotly.relayout(myDiv, {
+          images: [{}]
+        });
+
+      });
+
+
+    </script>
+
+  </body>
+</html

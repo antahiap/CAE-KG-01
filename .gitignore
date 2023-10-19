@@ -27,7 +27,44 @@ note_scripts/LSDYNA_script/
 **/*.diff
 **/.history
 **/_build
+.directory
 
+
+# Byte-compiled / optimized / DLL files
+__pycache__/
+*.py[cod]
+
+# Virtual environment
+venv/
+env/
+ENV/
+
+# Database
+db.sqlite3
+
+# Media and static files
+media/
+static/
+
+
+# IDE files
+.vscode/
+.idea/
+
+# Compiled Python files
+*.pyc
+
+# Backup files
+*~
+
+# If you're using pytest
+__pycache__/
+.pytest_cache/
+
+# Django log files
+*.log
+logs/
+log/
 
 
 ## Core latex/pdflatex auxiliary files:

@@ -1,3 +1,12 @@
 [submodule "documents/PhD-Publication"]
 	path = documents/PhD-Publication
 	url = https://github.com/antahiap/PhD-Publications.git
+[submodule "src/nrg_mdl"]
+	path = src/nrg_mdl
+	url = https://github.com/antahiap/nrg_mdl.git
+[submodule "src/transferDOE"]
+	path = src/transferDOE
+	url = https://github.com/antahiap/transferDOE.git
+[submodule "src/nrg_simRank"]
+	path = src/nrg_simRank
+	url = https://github.com/antahiap/nrg_simRank.git
