@@ -1,0 +1,41 @@
+## [Semantic Web Architecture](https://www.obitko.com/tutorials/ontologies-semantic-web/semantic-web-architecture.html)
+
+### NeoSemantic Installation
+
+- works on neo4j 4.4, 5.0, tricky to use neo4j 5.0, the allow.upgrade is removed > did the installation for 4.4.12 and upgradedd GAE_v1.0 to it. [link](https://neo4j.com/labs/neosemantics/installation/)
+
+- [ ] follow [this toturial](https://www.youtube.com/watch?v=LO-OvQaBq8s) to understand how to transfer a graph to schema.org
+- https://neo4j.com/nsmtx-rdf/
+
+- Using the HTTP Endpoint
+
+```
+dbms.unmanaged_extension_classes=n10s.endpoint=/rdf
+```
+
+- export as rdf
+
+```
+CALL n10s.rdf.export.cypher("match m=(r)-[p]-() return m limit 400")
+```
+
+### Ontology with Protege
+
+- installation, avalable on `/home/apakiman/Projects/protege/Protege-5.6.1/run.sh`
+- can open with url, avalable vehicle ontologies
+  - [URL](http://ontology.eil.utoronto.ca/icity/Vehicle/1.2/), Megan Katsumi > worked
+
+#### todo
+
+    - [AUTO](https://spec.edmcouncil.org/auto/)
+    - [GAO](https://www.w3.org/community/gao/wiki/Main_Page)
+
+#### Courses
+
+- openHPI [linked data](https://www.youtube.com/playlist?list=PLoOmvuyo5UAfY6jb46jCpMoqb-dbVewxg)
+- relation of schema.org and ontology > [follow pizza ontology](https://protegewiki.stanford.edu/wiki/Protege4Pizzas10Minutes)
+- OWL in Neo4j, [link](https://neo4j.com/blog/using-owl-with-neo4j/)
+
+### To learn
+
+- SCHAL

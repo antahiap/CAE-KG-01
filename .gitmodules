@@ -1,0 +1,3 @@
+[submodule "documents/PhD-Publication"]
+	path = documents/PhD-Publication
+	url = ssh://git@gitlab.scai.fraunhofer.de:22220/anahita.pakiman/energy_model.git
