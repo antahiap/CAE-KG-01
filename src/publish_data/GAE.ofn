@@ -1,0 +1,485 @@
+Prefix(:=<http://www.semanticweb.org/GAE//>)
+Prefix(owl:=<http://www.w3.org/2002/07/owl#>)
+Prefix(rdf:=<http://www.w3.org/1999/02/22-rdf-syntax-ns#>)
+Prefix(xml:=<http://www.w3.org/XML/1998/namespace>)
+Prefix(xsd:=<http://www.w3.org/2001/XMLSchema#>)
+Prefix(rdfs:=<http://www.w3.org/2000/01/rdf-schema#>)
+
+
+Ontology(<http://www.semanticweb.org/GAE/>
+
+Declaration(Class(<http://ontology.ethereal.cz/irao/Protocol>))
+Declaration(Class(<http://schema.org/Vehicle#Vehicle>))
+Declaration(Class(<http://www.aktors.org/ontology/support#Year>))
+Declaration(Class(<http://www.semanticweb.org/GAE/AdultOccupantProtection>))
+Declaration(Class(<http://www.semanticweb.org/GAE/ChildOccupantProtection>))
+Declaration(Class(<http://www.semanticweb.org/GAE/Class>))
+Declaration(Class(<http://www.semanticweb.org/GAE/Regulation>))
+Declaration(Class(<http://www.semanticweb.org/GAE/ResultPage>))
+Declaration(Class(<http://www.semanticweb.org/GAE/SafetyAssist>))
+Declaration(Class(<http://www.semanticweb.org/GAE/VulnerableRoadUser>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Arcitecture>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Attribute>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Barrier>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Change>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Connection>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Design>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Element>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Fe>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Group>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Impactor>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#MachineLearning>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Model>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Node>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Platform>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#Safety>))
+Declaration(Class(<http://www.semanticweb.org/GAE/#UpperBody>))
+Declaration(Class(:Behavior))
+Declaration(Class(:CommonNodes))
+Declaration(Class(:RigidBodyElement))
+Declaration(Class(:Semantic))
+Declaration(Class(:Simulation))
+Declaration(Class(:Weld))
+Declaration(Class(<http://www.semanticweb.org/GAE/FEModel/#Part>))
+Declaration(ObjectProperty(<http://dbpedia.org/ontology/linkedTo>))
+Declaration(ObjectProperty(<http://www.semanticweb.org/GAE/DefinedAs>))
+Declaration(ObjectProperty(<http://www.semanticweb.org/GAE/Rating>))
+Declaration(ObjectProperty(<http://www.semanticweb.org/GAE/VehicleClass>))
+Declaration(ObjectProperty(:Arribute))
+Declaration(ObjectProperty(:AttributeProtocol))
+Declaration(ObjectProperty(:CausedTo))
+Declaration(ObjectProperty(:ChangedTo))
+Declaration(ObjectProperty(:ConnectedBy))
+Declaration(ObjectProperty(:ContainPart))
+Declaration(ObjectProperty(:DevelopmentHistory))
+Declaration(ObjectProperty(:EnergyPart))
+Declaration(ObjectProperty(:FeModelReference))
+Declaration(ObjectProperty(:FeModelStatus))
+Declaration(ObjectProperty(:GroupBehavior))
+Declaration(ObjectProperty(:GroupDesign))
+Declaration(ObjectProperty(:GroupFeatures))
+Declaration(ObjectProperty(:HasChangeType))
+Declaration(ObjectProperty(:HasSemanticType))
+Declaration(ObjectProperty(:InPart))
+Declaration(ObjectProperty(:MachinLearning))
+Declaration(ObjectProperty(:ModelAttribute))
+Declaration(ObjectProperty(:ModelChange))
+Declaration(ObjectProperty(:ModelInput))
+Declaration(ObjectProperty(:OutputElement))
+Declaration(ObjectProperty(:OutputNode))
+Declaration(ObjectProperty(:PartBehavior))
+Declaration(ObjectProperty(:PartDesign))
+Declaration(ObjectProperty(:ProtocolYear))
+Declaration(ObjectProperty(:SameAs))
+Declaration(ObjectProperty(:SimulationBarrier))
+Declaration(ObjectProperty(:SimulationImpactor))
+Declaration(ObjectProperty(:SimulationModel))
+Declaration(ObjectProperty(:SimulationResult))
+Declaration(ObjectProperty(:SimulationSimilarity))
+Declaration(ObjectProperty(:VehicleFeModel))
+Declaration(ObjectProperty(:VehiclePlatform))
+Declaration(ObjectProperty(:VehicleUpperBody))
+Declaration(ObjectProperty(:developmentProcess))
+Declaration(ObjectProperty(<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo>))
+Declaration(ObjectProperty(<https://dbpedia.org/ontology/productionStartYear>))
+Declaration(ObjectProperty(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo>))
+############################
+#   Object Properties
+############################
+
+# Object Property: <http://dbpedia.org/ontology/linkedTo> (<http://dbpedia.org/ontology/linkedTo>)
+
+SubObjectPropertyOf(<http://dbpedia.org/ontology/linkedTo> :Arribute)
+ObjectPropertyDomain(<http://dbpedia.org/ontology/linkedTo> ObjectSomeValuesFrom(<http://dbpedia.org/ontology/linkedTo> <http://ontology.ethereal.cz/irao/Protocol>))
+ObjectPropertyRange(<http://dbpedia.org/ontology/linkedTo> ObjectSomeValuesFrom(<http://dbpedia.org/ontology/linkedTo> <http://www.semanticweb.org/GAE/ResultPage>))
+
+# Object Property: <http://www.semanticweb.org/GAE/DefinedAs> (<http://www.semanticweb.org/GAE/DefinedAs>)
+
+SubObjectPropertyOf(<http://www.semanticweb.org/GAE/DefinedAs> :Arribute)
+ObjectPropertyDomain(<http://www.semanticweb.org/GAE/DefinedAs> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/DefinedAs> <http://www.semanticweb.org/GAE/AdultOccupantProtection>))
+ObjectPropertyDomain(<http://www.semanticweb.org/GAE/DefinedAs> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/DefinedAs> <http://www.semanticweb.org/GAE/ChildOccupantProtection>))
+ObjectPropertyDomain(<http://www.semanticweb.org/GAE/DefinedAs> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/DefinedAs> <http://www.semanticweb.org/GAE/SafetyAssist>))
+ObjectPropertyDomain(<http://www.semanticweb.org/GAE/DefinedAs> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/DefinedAs> <http://www.semanticweb.org/GAE/VulnerableRoadUser>))
+ObjectPropertyRange(<http://www.semanticweb.org/GAE/DefinedAs> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/DefinedAs> <http://ontology.ethereal.cz/irao/Protocol>))
+
+# Object Property: <http://www.semanticweb.org/GAE/Rating> (<http://www.semanticweb.org/GAE/Rating>)
+
+SubObjectPropertyOf(<http://www.semanticweb.org/GAE/Rating> :Arribute)
+ObjectPropertyDomain(<http://www.semanticweb.org/GAE/Rating> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/Rating> <http://schema.org/Vehicle#Vehicle>))
+ObjectPropertyRange(<http://www.semanticweb.org/GAE/Rating> ObjectMaxCardinality(1 <http://www.semanticweb.org/GAE/Rating> <http://www.semanticweb.org/GAE/AdultOccupantProtection>))
+ObjectPropertyRange(<http://www.semanticweb.org/GAE/Rating> ObjectMaxCardinality(1 <http://www.semanticweb.org/GAE/Rating> <http://www.semanticweb.org/GAE/ChildOccupantProtection>))
+ObjectPropertyRange(<http://www.semanticweb.org/GAE/Rating> ObjectMaxCardinality(1 <http://www.semanticweb.org/GAE/Rating> <http://www.semanticweb.org/GAE/SafetyAssist>))
+ObjectPropertyRange(<http://www.semanticweb.org/GAE/Rating> ObjectMaxCardinality(1 <http://www.semanticweb.org/GAE/Rating> <http://www.semanticweb.org/GAE/VulnerableRoadUser>))
+
+# Object Property: <http://www.semanticweb.org/GAE/VehicleClass> (<http://www.semanticweb.org/GAE/VehicleClass>)
+
+SubObjectPropertyOf(<http://www.semanticweb.org/GAE/VehicleClass> :developmentProcess)
+ObjectPropertyDomain(<http://www.semanticweb.org/GAE/VehicleClass> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/VehicleClass> <http://www.semanticweb.org/GAE/Class>))
+ObjectPropertyRange(<http://www.semanticweb.org/GAE/VehicleClass> ObjectSomeValuesFrom(<http://www.semanticweb.org/GAE/VehicleClass> <http://schema.org/Vehicle#Vehicle>))
+
+# Object Property: :Arribute (:Arribute)
+
+SubObjectPropertyOf(:Arribute :developmentProcess)
+
+# Object Property: :AttributeProtocol (:AttributeProtocol)
+
+SubObjectPropertyOf(:AttributeProtocol :Arribute)
+ObjectPropertyDomain(:AttributeProtocol ObjectSomeValuesFrom(:AttributeProtocol <http://www.semanticweb.org/GAE/#Attribute>))
+ObjectPropertyRange(:AttributeProtocol ObjectSomeValuesFrom(:AttributeProtocol <http://ontology.ethereal.cz/irao/Protocol>))
+
+# Object Property: :CausedTo (:CausedTo)
+
+SubObjectPropertyOf(:CausedTo :MachinLearning)
+ObjectPropertyDomain(:CausedTo ObjectSomeValuesFrom(:CausedTo <http://www.semanticweb.org/GAE/#Change>))
+ObjectPropertyRange(:CausedTo ObjectSomeValuesFrom(:CausedTo <http://www.semanticweb.org/GAE/#Group>))
+
+# Object Property: :ChangedTo (:ChangedTo)
+
+SubObjectPropertyOf(:ChangedTo :ModelChange)
+ObjectPropertyDomain(:ChangedTo ObjectAllValuesFrom(:ChangedTo ObjectUnionOf(<http://www.semanticweb.org/GAE/#Connection> :CommonNodes :RigidBodyElement :Weld <http://www.semanticweb.org/GAE/FEModel/#Part>)))
+ObjectPropertyRange(:ChangedTo ObjectAllValuesFrom(:ChangedTo ObjectUnionOf(<http://www.semanticweb.org/GAE/#Connection> :CommonNodes :RigidBodyElement :Weld <http://www.semanticweb.org/GAE/FEModel/#Part>)))
+
+# Object Property: :ConnectedBy (:ConnectedBy)
+
+SubObjectPropertyOf(:ConnectedBy :ModelInput)
+ObjectPropertyDomain(:ConnectedBy ObjectSomeValuesFrom(:ConnectedBy <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:ConnectedBy ObjectSomeValuesFrom(:ConnectedBy <http://www.semanticweb.org/GAE/#Connection>))
+ObjectPropertyRange(:ConnectedBy ObjectSomeValuesFrom(:ConnectedBy :CommonNodes))
+ObjectPropertyRange(:ConnectedBy ObjectSomeValuesFrom(:ConnectedBy :RigidBodyElement))
+ObjectPropertyRange(:ConnectedBy ObjectSomeValuesFrom(:ConnectedBy :Weld))
+
+# Object Property: :ContainPart (:ContainPart)
+
+SubObjectPropertyOf(:ContainPart :MachinLearning)
+ObjectPropertyDomain(:ContainPart ObjectSomeValuesFrom(:ContainPart <http://www.semanticweb.org/GAE/#Group>))
+ObjectPropertyRange(:ContainPart ObjectSomeValuesFrom(:ContainPart <http://www.semanticweb.org/GAE/FEModel/#Part>))
+
+# Object Property: :DevelopmentHistory (:DevelopmentHistory)
+
+SubObjectPropertyOf(:DevelopmentHistory :VehicleFeModel)
+
+# Object Property: :EnergyPart (:EnergyPart)
+
+SubObjectPropertyOf(:EnergyPart :SimulationResult)
+ObjectPropertyDomain(:EnergyPart ObjectSomeValuesFrom(:SimulationSimilarity :Simulation))
+ObjectPropertyRange(:EnergyPart ObjectSomeValuesFrom(:SimulationSimilarity <http://www.semanticweb.org/GAE/FEModel/#Part>))
+
+# Object Property: :FeModelReference (:FeModelReference)
+
+SubObjectPropertyOf(:FeModelReference :DevelopmentHistory)
+ObjectPropertyDomain(:FeModelReference ObjectExactCardinality(1 :FeModelReference <http://www.semanticweb.org/GAE/#Model>))
+ObjectPropertyRange(:FeModelReference ObjectSomeValuesFrom(:FeModelReference <http://www.semanticweb.org/GAE/#Model>))
+
+# Object Property: :FeModelStatus (:FeModelStatus)
+
+SubObjectPropertyOf(:FeModelStatus :DevelopmentHistory)
+ObjectPropertyDomain(:FeModelStatus ObjectExactCardinality(1 :FeModelStatus <http://www.semanticweb.org/GAE/#Model>))
+ObjectPropertyRange(:FeModelStatus ObjectExactCardinality(1 :FeModelStatus <http://www.semanticweb.org/GAE/#Model>))
+
+# Object Property: :GroupBehavior (:GroupBehavior)
+
+SubObjectPropertyOf(:GroupBehavior :MachinLearning)
+ObjectPropertyDomain(:GroupBehavior ObjectSomeValuesFrom(:GroupBehavior :Behavior))
+ObjectPropertyRange(:GroupBehavior ObjectSomeValuesFrom(:GroupBehavior <http://www.semanticweb.org/GAE/#Group>))
+
+# Object Property: :GroupDesign (:GroupDesign)
+
+SubObjectPropertyOf(:GroupDesign :MachinLearning)
+ObjectPropertyDomain(:GroupDesign ObjectSomeValuesFrom(:GroupDesign <http://www.semanticweb.org/GAE/#Design>))
+ObjectPropertyRange(:GroupDesign ObjectSomeValuesFrom(:GroupDesign <http://www.semanticweb.org/GAE/#Group>))
+
+# Object Property: :GroupFeatures (:GroupFeatures)
+
+SubObjectPropertyOf(:GroupFeatures :SimulationResult)
+ObjectPropertyDomain(:GroupFeatures ObjectSomeValuesFrom(:GroupFeatures <http://www.semanticweb.org/GAE/#Group>))
+ObjectPropertyRange(:GroupFeatures ObjectSomeValuesFrom(:GroupFeatures :Simulation))
+
+# Object Property: :HasChangeType (:HasChangeType)
+
+SubObjectPropertyOf(:HasChangeType :ModelChange)
+ObjectPropertyDomain(:HasChangeType ObjectSomeValuesFrom(:HasChangeType <http://www.semanticweb.org/GAE/#Connection>))
+ObjectPropertyDomain(:HasChangeType ObjectSomeValuesFrom(:HasChangeType :CommonNodes))
+ObjectPropertyDomain(:HasChangeType ObjectSomeValuesFrom(:HasChangeType :RigidBodyElement))
+ObjectPropertyDomain(:HasChangeType ObjectSomeValuesFrom(:HasChangeType :Weld))
+ObjectPropertyDomain(:HasChangeType ObjectSomeValuesFrom(:HasChangeType <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:HasChangeType ObjectSomeValuesFrom(:HasChangeType <http://www.semanticweb.org/GAE/#Change>))
+
+# Object Property: :HasSemanticType (:HasSemanticType)
+
+SubObjectPropertyOf(:HasSemanticType :ModelChange)
+ObjectPropertyDomain(:HasSemanticType ObjectSomeValuesFrom(:HasSemanticType <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:HasSemanticType ObjectExactCardinality(1 :HasSemanticType :Semantic))
+
+# Object Property: :InPart (:InPart)
+
+SubObjectPropertyOf(:InPart :ModelInput)
+ObjectPropertyDomain(:InPart ObjectSomeValuesFrom(:InPart <http://www.semanticweb.org/GAE/#Element>))
+ObjectPropertyDomain(:InPart ObjectSomeValuesFrom(:InPart <http://www.semanticweb.org/GAE/#Node>))
+ObjectPropertyRange(:InPart ObjectAllValuesFrom(:InPart <http://www.semanticweb.org/GAE/FEModel/#Part>))
+
+# Object Property: :MachinLearning (:MachinLearning)
+
+SubObjectPropertyOf(:MachinLearning :VehicleFeModel)
+
+# Object Property: :ModelAttribute (:ModelAttribute)
+
+SubObjectPropertyOf(:ModelAttribute :VehicleFeModel)
+ObjectPropertyDomain(:ModelAttribute ObjectSomeValuesFrom(:ModelAttribute <http://www.semanticweb.org/GAE/#Attribute>))
+ObjectPropertyRange(:ModelAttribute ObjectSomeValuesFrom(:ModelAttribute <http://www.semanticweb.org/GAE/#Model>))
+
+# Object Property: :ModelChange (:ModelChange)
+
+SubObjectPropertyOf(:ModelChange :VehicleFeModel)
+
+# Object Property: :ModelInput (:ModelInput)
+
+SubObjectPropertyOf(:ModelInput :VehicleFeModel)
+
+# Object Property: :OutputElement (:OutputElement)
+
+SubObjectPropertyOf(:OutputElement :SimulationResult)
+ObjectPropertyDomain(:OutputElement ObjectAllValuesFrom(:OutputElement :Simulation))
+ObjectPropertyRange(:OutputElement ObjectAllValuesFrom(:OutputElement <http://www.semanticweb.org/GAE/#Element>))
+
+# Object Property: :OutputNode (:OutputNode)
+
+SubObjectPropertyOf(:OutputNode :SimulationResult)
+ObjectPropertyDomain(:OutputNode ObjectAllValuesFrom(:OutputNode :Simulation))
+ObjectPropertyRange(:OutputNode ObjectAllValuesFrom(:OutputNode <http://www.semanticweb.org/GAE/#Node>))
+
+# Object Property: :PartBehavior (:PartBehavior)
+
+SubObjectPropertyOf(:PartBehavior :MachinLearning)
+ObjectPropertyDomain(:PartBehavior ObjectSomeValuesFrom(:PartBehavior <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:PartBehavior ObjectSomeValuesFrom(:PartBehavior :Behavior))
+
+# Object Property: :PartDesign (:PartDesign)
+
+SubObjectPropertyOf(:PartDesign :MachinLearning)
+ObjectPropertyDomain(:PartDesign ObjectSomeValuesFrom(:PartDesign <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:PartDesign ObjectSomeValuesFrom(:PartDesign <http://www.semanticweb.org/GAE/#Design>))
+
+# Object Property: :ProtocolYear (:ProtocolYear)
+
+SubObjectPropertyOf(:ProtocolYear :Arribute)
+ObjectPropertyDomain(:ProtocolYear ObjectSomeValuesFrom(:ProtocolYear <http://ontology.ethereal.cz/irao/Protocol>))
+ObjectPropertyRange(:ProtocolYear ObjectExactCardinality(1 :ProtocolYear <http://www.aktors.org/ontology/support#Year>))
+
+# Object Property: :SameAs (:SameAs)
+
+SubObjectPropertyOf(:SameAs :ModelChange)
+ObjectPropertyDomain(:SameAs ObjectExactCardinality(1 :SameAs <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:SameAs ObjectExactCardinality(1 :SameAs <http://www.semanticweb.org/GAE/FEModel/#Part>))
+
+# Object Property: :SimulationBarrier (:SimulationBarrier)
+
+SubObjectPropertyOf(:SimulationBarrier :SimulationResult)
+ObjectPropertyDomain(:SimulationBarrier ObjectSomeValuesFrom(:SimulationBarrier :Simulation))
+ObjectPropertyRange(:SimulationBarrier ObjectSomeValuesFrom(:SimulationBarrier <http://www.semanticweb.org/GAE/#Barrier>))
+
+# Object Property: :SimulationImpactor (:SimulationImpactor)
+
+SubObjectPropertyOf(:SimulationImpactor :SimulationResult)
+ObjectPropertyDomain(:SimulationImpactor ObjectSomeValuesFrom(:SimulationImpactor :Simulation))
+ObjectPropertyRange(:SimulationImpactor ObjectSomeValuesFrom(:SimulationImpactor <http://www.semanticweb.org/GAE/#Impactor>))
+
+# Object Property: :SimulationModel (:SimulationModel)
+
+SubObjectPropertyOf(:SimulationModel :SimulationResult)
+ObjectPropertyDomain(:SimulationModel ObjectAllValuesFrom(:SimulationModel :Simulation))
+ObjectPropertyRange(:SimulationModel ObjectAllValuesFrom(:SimulationModel <http://www.semanticweb.org/GAE/#Model>))
+
+# Object Property: :SimulationResult (:SimulationResult)
+
+SubObjectPropertyOf(:SimulationResult :VehicleFeModel)
+
+# Object Property: :SimulationSimilarity (:SimulationSimilarity)
+
+SubObjectPropertyOf(:SimulationSimilarity :SimulationResult)
+ObjectPropertyDomain(:SimulationSimilarity ObjectSomeValuesFrom(:SimulationSimilarity :Simulation))
+ObjectPropertyRange(:SimulationSimilarity ObjectSomeValuesFrom(:SimulationSimilarity :Simulation))
+
+# Object Property: :VehicleFeModel (:VehicleFeModel)
+
+SubObjectPropertyOf(:VehicleFeModel :developmentProcess)
+ObjectPropertyDomain(:VehicleFeModel ObjectExactCardinality(1 :VehicleFeModel <http://schema.org/Vehicle#Vehicle>))
+ObjectPropertyRange(:VehicleFeModel ObjectSomeValuesFrom(:VehicleFeModel <http://www.semanticweb.org/GAE/#Model>))
+
+# Object Property: :VehiclePlatform (:VehiclePlatform)
+
+SubObjectPropertyOf(:VehiclePlatform :developmentProcess)
+ObjectPropertyDomain(:VehiclePlatform ObjectSomeValuesFrom(:VehiclePlatform <http://schema.org/Vehicle#Vehicle>))
+ObjectPropertyRange(:VehiclePlatform ObjectExactCardinality(1 :VehiclePlatform <http://www.semanticweb.org/GAE/#Platform>))
+
+# Object Property: :VehicleUpperBody (:VehicleUpperBody)
+
+SubObjectPropertyOf(:VehicleUpperBody :developmentProcess)
+ObjectPropertyDomain(:VehicleUpperBody ObjectExactCardinality(1 :VehicleUpperBody <http://schema.org/Vehicle#Vehicle>))
+ObjectPropertyRange(:VehicleUpperBody ObjectExactCardinality(1 :VehicleUpperBody <http://www.semanticweb.org/GAE/#UpperBody>))
+
+# Object Property: :developmentProcess (:developmentProcess)
+
+ObjectPropertyDomain(:developmentProcess ObjectSomeValuesFrom(:ConnectedBy <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(:developmentProcess ObjectSomeValuesFrom(:ConnectedBy :CommonNodes))
+ObjectPropertyRange(:developmentProcess ObjectSomeValuesFrom(:ConnectedBy :RigidBodyElement))
+ObjectPropertyRange(:developmentProcess ObjectSomeValuesFrom(:ConnectedBy :Weld))
+
+# Object Property: <https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> (<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo>)
+
+SubObjectPropertyOf(<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> :ModelInput)
+ObjectPropertyDomain(<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> ObjectSomeValuesFrom(<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> ObjectSomeValuesFrom(<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> <http://www.semanticweb.org/GAE/FEModel/#Part>))
+
+# Object Property: <https://dbpedia.org/ontology/productionStartYear> (<https://dbpedia.org/ontology/productionStartYear>)
+
+SubObjectPropertyOf(<https://dbpedia.org/ontology/productionStartYear> :developmentProcess)
+ObjectPropertyDomain(<https://dbpedia.org/ontology/productionStartYear> ObjectSomeValuesFrom(<https://dbpedia.org/ontology/productionStartYear> <http://schema.org/Vehicle#Vehicle>))
+ObjectPropertyRange(<https://dbpedia.org/ontology/productionStartYear> ObjectExactCardinality(1 owl:topObjectProperty <http://www.aktors.org/ontology/support#Year>))
+
+# Object Property: <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> (<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo>)
+
+SubObjectPropertyOf(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> :Arribute)
+SubObjectPropertyOf(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> :ModelInput)
+ObjectPropertyDomain(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectSomeValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> <http://www.semanticweb.org/GAE/#Barrier>))
+ObjectPropertyDomain(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectSomeValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> <http://www.semanticweb.org/GAE/#Element>))
+ObjectPropertyDomain(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectSomeValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> <http://www.semanticweb.org/GAE/#Impactor>))
+ObjectPropertyDomain(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectSomeValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> <http://www.semanticweb.org/GAE/#Node>))
+ObjectPropertyDomain(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectSomeValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> <http://www.semanticweb.org/GAE/FEModel/#Part>))
+ObjectPropertyRange(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectSomeValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> <http://ontology.ethereal.cz/irao/Protocol>))
+ObjectPropertyRange(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectAllValuesFrom(<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ObjectIntersectionOf(<http://www.semanticweb.org/GAE/#Model> ObjectUnionOf(<http://www.semanticweb.org/GAE/#Platform> <http://www.semanticweb.org/GAE/#UpperBody>))))
+
+
+############################
+#   Classes
+############################
+
+# Class: <http://ontology.ethereal.cz/irao/Protocol> (<http://ontology.ethereal.cz/irao/Protocol>)
+
+SubClassOf(<http://ontology.ethereal.cz/irao/Protocol> <http://www.semanticweb.org/GAE/Regulation>)
+
+# Class: <http://www.aktors.org/ontology/support#Year> (<http://www.aktors.org/ontology/support#Year>)
+
+SubClassOf(<http://www.aktors.org/ontology/support#Year> <http://schema.org/Vehicle#Vehicle>)
+
+# Class: <http://www.semanticweb.org/GAE/AdultOccupantProtection> (<http://www.semanticweb.org/GAE/AdultOccupantProtection>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/AdultOccupantProtection> <http://ontology.ethereal.cz/irao/Protocol>)
+
+# Class: <http://www.semanticweb.org/GAE/ChildOccupantProtection> (<http://www.semanticweb.org/GAE/ChildOccupantProtection>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/ChildOccupantProtection> <http://ontology.ethereal.cz/irao/Protocol>)
+
+# Class: <http://www.semanticweb.org/GAE/Class> (<http://www.semanticweb.org/GAE/Class>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/Class> <http://schema.org/Vehicle#Vehicle>)
+
+# Class: <http://www.semanticweb.org/GAE/Regulation> (<http://www.semanticweb.org/GAE/Regulation>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/Regulation> <http://www.semanticweb.org/GAE/#Safety>)
+
+# Class: <http://www.semanticweb.org/GAE/ResultPage> (<http://www.semanticweb.org/GAE/ResultPage>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/ResultPage> <http://www.semanticweb.org/GAE/Regulation>)
+
+# Class: <http://www.semanticweb.org/GAE/SafetyAssist> (<http://www.semanticweb.org/GAE/SafetyAssist>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/SafetyAssist> <http://ontology.ethereal.cz/irao/Protocol>)
+
+# Class: <http://www.semanticweb.org/GAE/VulnerableRoadUser> (<http://www.semanticweb.org/GAE/VulnerableRoadUser>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/VulnerableRoadUser> <http://ontology.ethereal.cz/irao/Protocol>)
+
+# Class: <http://www.semanticweb.org/GAE/#Arcitecture> (<http://www.semanticweb.org/GAE/#Arcitecture>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Arcitecture> <http://schema.org/Vehicle#Vehicle>)
+
+# Class: <http://www.semanticweb.org/GAE/#Attribute> (<http://www.semanticweb.org/GAE/#Attribute>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Attribute> <http://schema.org/Vehicle#Vehicle>)
+
+# Class: <http://www.semanticweb.org/GAE/#Barrier> (<http://www.semanticweb.org/GAE/#Barrier>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Barrier> <http://www.semanticweb.org/GAE/#Safety>)
+
+# Class: <http://www.semanticweb.org/GAE/#Change> (<http://www.semanticweb.org/GAE/#Change>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Change> <http://www.semanticweb.org/GAE/#Fe>)
+
+# Class: <http://www.semanticweb.org/GAE/#Connection> (<http://www.semanticweb.org/GAE/#Connection>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Connection> <http://www.semanticweb.org/GAE/#Model>)
+
+# Class: <http://www.semanticweb.org/GAE/#Design> (<http://www.semanticweb.org/GAE/#Design>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Design> <http://www.semanticweb.org/GAE/#MachineLearning>)
+
+# Class: <http://www.semanticweb.org/GAE/#Element> (<http://www.semanticweb.org/GAE/#Element>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Element> <http://www.semanticweb.org/GAE/FEModel/#Part>)
+
+# Class: <http://www.semanticweb.org/GAE/#Fe> (<http://www.semanticweb.org/GAE/#Fe>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Fe> <http://schema.org/Vehicle#Vehicle>)
+
+# Class: <http://www.semanticweb.org/GAE/#Group> (<http://www.semanticweb.org/GAE/#Group>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Group> <http://www.semanticweb.org/GAE/#MachineLearning>)
+
+# Class: <http://www.semanticweb.org/GAE/#Impactor> (<http://www.semanticweb.org/GAE/#Impactor>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Impactor> <http://www.semanticweb.org/GAE/#Safety>)
+
+# Class: <http://www.semanticweb.org/GAE/#MachineLearning> (<http://www.semanticweb.org/GAE/#MachineLearning>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#MachineLearning> <http://www.semanticweb.org/GAE/#Fe>)
+
+# Class: <http://www.semanticweb.org/GAE/#Model> (<http://www.semanticweb.org/GAE/#Model>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Model> <http://www.semanticweb.org/GAE/#Fe>)
+
+# Class: <http://www.semanticweb.org/GAE/#Node> (<http://www.semanticweb.org/GAE/#Node>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Node> <http://www.semanticweb.org/GAE/#Element>)
+
+# Class: <http://www.semanticweb.org/GAE/#Platform> (<http://www.semanticweb.org/GAE/#Platform>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Platform> <http://www.semanticweb.org/GAE/#Arcitecture>)
+
+# Class: <http://www.semanticweb.org/GAE/#Safety> (<http://www.semanticweb.org/GAE/#Safety>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#Safety> <http://www.semanticweb.org/GAE/#Attribute>)
+
+# Class: <http://www.semanticweb.org/GAE/#UpperBody> (<http://www.semanticweb.org/GAE/#UpperBody>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/#UpperBody> <http://www.semanticweb.org/GAE/#Arcitecture>)
+
+# Class: :Behavior (:Behavior)
+
+SubClassOf(:Behavior <http://www.semanticweb.org/GAE/#MachineLearning>)
+
+# Class: :CommonNodes (:CommonNodes)
+
+SubClassOf(:CommonNodes <http://www.semanticweb.org/GAE/#Connection>)
+
+# Class: :RigidBodyElement (:RigidBodyElement)
+
+SubClassOf(:RigidBodyElement <http://www.semanticweb.org/GAE/#Connection>)
+
+# Class: :Semantic (:Semantic)
+
+SubClassOf(:Semantic <http://www.semanticweb.org/GAE/FEModel/#Part>)
+
+# Class: :Simulation (:Simulation)
+
+SubClassOf(:Simulation <http://www.semanticweb.org/GAE/#Fe>)
+
+# Class: :Weld (:Weld)
+
+SubClassOf(:Weld <http://www.semanticweb.org/GAE/#Connection>)
+
+# Class: <http://www.semanticweb.org/GAE/FEModel/#Part> (<http://www.semanticweb.org/GAE/FEModel/#Part>)
+
+SubClassOf(<http://www.semanticweb.org/GAE/FEModel/#Part> <http://www.semanticweb.org/GAE/#Model>)
+
+
+)

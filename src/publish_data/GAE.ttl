@@ -1,0 +1,693 @@
+@prefix : <http://www.semanticweb.org/GAE//> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@base <http://www.semanticweb.org/GAE//> .
+
+<http://www.semanticweb.org/GAE/> rdf:type owl:Ontology .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://www.semanticweb.org/GAE//Arribute
+:Arribute rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :developmentProcess .
+
+
+###  http://www.semanticweb.org/GAE//AttributeProtocol
+:AttributeProtocol rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :Arribute ;
+                   rdfs:domain [ rdf:type owl:Restriction ;
+                                 owl:onProperty :AttributeProtocol ;
+                                 owl:someValuesFrom <http://www.semanticweb.org/GAE/#Attribute>
+                               ] ;
+                   rdfs:range [ rdf:type owl:Restriction ;
+                                owl:onProperty :AttributeProtocol ;
+                                owl:someValuesFrom <http://ontology.ethereal.cz/irao/Protocol>
+                              ] .
+
+
+###  http://www.semanticweb.org/GAE//CausedTo
+:CausedTo rdf:type owl:ObjectProperty ;
+          rdfs:subPropertyOf :MachinLearning ;
+          rdfs:domain [ rdf:type owl:Restriction ;
+                        owl:onProperty :CausedTo ;
+                        owl:someValuesFrom <http://www.semanticweb.org/GAE/#Change>
+                      ] ;
+          rdfs:range [ rdf:type owl:Restriction ;
+                       owl:onProperty :CausedTo ;
+                       owl:someValuesFrom <http://www.semanticweb.org/GAE/#Group>
+                     ] .
+
+
+###  http://www.semanticweb.org/GAE//ChangedTo
+:ChangedTo rdf:type owl:ObjectProperty ;
+           rdfs:subPropertyOf :ModelChange ;
+           rdfs:domain [ rdf:type owl:Restriction ;
+                         owl:onProperty :ChangedTo ;
+                         owl:allValuesFrom [ rdf:type owl:Class ;
+                                             owl:unionOf ( <http://www.semanticweb.org/GAE/#Connection>
+                                                           :CommonNodes
+                                                           :RigidBodyElement
+                                                           :Weld
+                                                           <http://www.semanticweb.org/GAE/FEModel/#Part>
+                                                         )
+                                           ]
+                       ] ;
+           rdfs:range [ rdf:type owl:Restriction ;
+                        owl:onProperty :ChangedTo ;
+                        owl:allValuesFrom [ rdf:type owl:Class ;
+                                            owl:unionOf ( <http://www.semanticweb.org/GAE/#Connection>
+                                                          :CommonNodes
+                                                          :RigidBodyElement
+                                                          :Weld
+                                                          <http://www.semanticweb.org/GAE/FEModel/#Part>
+                                                        )
+                                          ]
+                      ] .
+
+
+###  http://www.semanticweb.org/GAE//ConnectedBy
+:ConnectedBy rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :ModelInput ;
+             rdfs:domain [ rdf:type owl:Restriction ;
+                           owl:onProperty :ConnectedBy ;
+                           owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                         ] ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty :ConnectedBy ;
+                          owl:someValuesFrom <http://www.semanticweb.org/GAE/#Connection>
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :ConnectedBy ;
+                          owl:someValuesFrom :CommonNodes
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :ConnectedBy ;
+                          owl:someValuesFrom :RigidBodyElement
+                        ] ,
+                        [ rdf:type owl:Restriction ;
+                          owl:onProperty :ConnectedBy ;
+                          owl:someValuesFrom :Weld
+                        ] .
+
+
+###  http://www.semanticweb.org/GAE//ContainPart
+:ContainPart rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :MachinLearning ;
+             rdfs:domain [ rdf:type owl:Restriction ;
+                           owl:onProperty :ContainPart ;
+                           owl:someValuesFrom <http://www.semanticweb.org/GAE/#Group>
+                         ] ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty :ContainPart ;
+                          owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                        ] .
+
+
+###  http://www.semanticweb.org/GAE//DevelopmentHistory
+:DevelopmentHistory rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :VehicleFeModel .
+
+
+###  http://www.semanticweb.org/GAE//EnergyPart
+:EnergyPart rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :SimulationResult ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty :SimulationSimilarity ;
+                          owl:someValuesFrom :Simulation
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty :SimulationSimilarity ;
+                         owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                       ] .
+
+
+###  http://www.semanticweb.org/GAE//FeModelReference
+:FeModelReference rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :DevelopmentHistory ;
+                  rdfs:domain [ rdf:type owl:Restriction ;
+                                owl:onProperty :FeModelReference ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://www.semanticweb.org/GAE/#Model>
+                              ] ;
+                  rdfs:range [ rdf:type owl:Restriction ;
+                               owl:onProperty :FeModelReference ;
+                               owl:someValuesFrom <http://www.semanticweb.org/GAE/#Model>
+                             ] .
+
+
+###  http://www.semanticweb.org/GAE//FeModelStatus
+:FeModelStatus rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :DevelopmentHistory ;
+               rdfs:domain [ rdf:type owl:Restriction ;
+                             owl:onProperty :FeModelStatus ;
+                             owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                             owl:onClass <http://www.semanticweb.org/GAE/#Model>
+                           ] ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty :FeModelStatus ;
+                            owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                            owl:onClass <http://www.semanticweb.org/GAE/#Model>
+                          ] .
+
+
+###  http://www.semanticweb.org/GAE//GroupBehavior
+:GroupBehavior rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :MachinLearning ;
+               rdfs:domain [ rdf:type owl:Restriction ;
+                             owl:onProperty :GroupBehavior ;
+                             owl:someValuesFrom :Behavior
+                           ] ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty :GroupBehavior ;
+                            owl:someValuesFrom <http://www.semanticweb.org/GAE/#Group>
+                          ] .
+
+
+###  http://www.semanticweb.org/GAE//GroupDesign
+:GroupDesign rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :MachinLearning ;
+             rdfs:domain [ rdf:type owl:Restriction ;
+                           owl:onProperty :GroupDesign ;
+                           owl:someValuesFrom <http://www.semanticweb.org/GAE/#Design>
+                         ] ;
+             rdfs:range [ rdf:type owl:Restriction ;
+                          owl:onProperty :GroupDesign ;
+                          owl:someValuesFrom <http://www.semanticweb.org/GAE/#Group>
+                        ] .
+
+
+###  http://www.semanticweb.org/GAE//GroupFeatures
+:GroupFeatures rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :SimulationResult ;
+               rdfs:domain [ rdf:type owl:Restriction ;
+                             owl:onProperty :GroupFeatures ;
+                             owl:someValuesFrom <http://www.semanticweb.org/GAE/#Group>
+                           ] ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty :GroupFeatures ;
+                            owl:someValuesFrom :Simulation
+                          ] .
+
+
+###  http://www.semanticweb.org/GAE//HasChangeType
+:HasChangeType rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :ModelChange ;
+               rdfs:domain [ rdf:type owl:Restriction ;
+                             owl:onProperty :HasChangeType ;
+                             owl:someValuesFrom <http://www.semanticweb.org/GAE/#Connection>
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :HasChangeType ;
+                             owl:someValuesFrom :CommonNodes
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :HasChangeType ;
+                             owl:someValuesFrom :RigidBodyElement
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :HasChangeType ;
+                             owl:someValuesFrom :Weld
+                           ] ,
+                           [ rdf:type owl:Restriction ;
+                             owl:onProperty :HasChangeType ;
+                             owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                           ] ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty :HasChangeType ;
+                            owl:someValuesFrom <http://www.semanticweb.org/GAE/#Change>
+                          ] .
+
+
+###  http://www.semanticweb.org/GAE//HasSemanticType
+:HasSemanticType rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :ModelChange ;
+                 rdfs:domain [ rdf:type owl:Restriction ;
+                               owl:onProperty :HasSemanticType ;
+                               owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                             ] ;
+                 rdfs:range [ rdf:type owl:Restriction ;
+                              owl:onProperty :HasSemanticType ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass :Semantic
+                            ] .
+
+
+###  http://www.semanticweb.org/GAE//InPart
+:InPart rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :ModelInput ;
+        rdfs:domain [ rdf:type owl:Restriction ;
+                      owl:onProperty :InPart ;
+                      owl:someValuesFrom <http://www.semanticweb.org/GAE/#Element>
+                    ] ,
+                    [ rdf:type owl:Restriction ;
+                      owl:onProperty :InPart ;
+                      owl:someValuesFrom <http://www.semanticweb.org/GAE/#Node>
+                    ] ;
+        rdfs:range [ rdf:type owl:Restriction ;
+                     owl:onProperty :InPart ;
+                     owl:allValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                   ] .
+
+
+###  http://www.semanticweb.org/GAE//MachinLearning
+:MachinLearning rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :VehicleFeModel .
+
+
+###  http://www.semanticweb.org/GAE//ModelAttribute
+:ModelAttribute rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :VehicleFeModel ;
+                rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :ModelAttribute ;
+                              owl:someValuesFrom <http://www.semanticweb.org/GAE/#Attribute>
+                            ] ;
+                rdfs:range [ rdf:type owl:Restriction ;
+                             owl:onProperty :ModelAttribute ;
+                             owl:someValuesFrom <http://www.semanticweb.org/GAE/#Model>
+                           ] .
+
+
+###  http://www.semanticweb.org/GAE//ModelChange
+:ModelChange rdf:type owl:ObjectProperty ;
+             rdfs:subPropertyOf :VehicleFeModel .
+
+
+###  http://www.semanticweb.org/GAE//ModelInput
+:ModelInput rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :VehicleFeModel .
+
+
+###  http://www.semanticweb.org/GAE//OutputElement
+:OutputElement rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :SimulationResult ;
+               rdfs:domain [ rdf:type owl:Restriction ;
+                             owl:onProperty :OutputElement ;
+                             owl:allValuesFrom :Simulation
+                           ] ;
+               rdfs:range [ rdf:type owl:Restriction ;
+                            owl:onProperty :OutputElement ;
+                            owl:allValuesFrom <http://www.semanticweb.org/GAE/#Element>
+                          ] .
+
+
+###  http://www.semanticweb.org/GAE//OutputNode
+:OutputNode rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :SimulationResult ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty :OutputNode ;
+                          owl:allValuesFrom :Simulation
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty :OutputNode ;
+                         owl:allValuesFrom <http://www.semanticweb.org/GAE/#Node>
+                       ] .
+
+
+###  http://www.semanticweb.org/GAE//PartBehavior
+:PartBehavior rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :MachinLearning ;
+              rdfs:domain [ rdf:type owl:Restriction ;
+                            owl:onProperty :PartBehavior ;
+                            owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                          ] ;
+              rdfs:range [ rdf:type owl:Restriction ;
+                           owl:onProperty :PartBehavior ;
+                           owl:someValuesFrom :Behavior
+                         ] .
+
+
+###  http://www.semanticweb.org/GAE//PartDesign
+:PartDesign rdf:type owl:ObjectProperty ;
+            rdfs:subPropertyOf :MachinLearning ;
+            rdfs:domain [ rdf:type owl:Restriction ;
+                          owl:onProperty :PartDesign ;
+                          owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                        ] ;
+            rdfs:range [ rdf:type owl:Restriction ;
+                         owl:onProperty :PartDesign ;
+                         owl:someValuesFrom <http://www.semanticweb.org/GAE/#Design>
+                       ] .
+
+
+###  http://www.semanticweb.org/GAE//ProtocolYear
+:ProtocolYear rdf:type owl:ObjectProperty ;
+              rdfs:subPropertyOf :Arribute ;
+              rdfs:domain [ rdf:type owl:Restriction ;
+                            owl:onProperty :ProtocolYear ;
+                            owl:someValuesFrom <http://ontology.ethereal.cz/irao/Protocol>
+                          ] ;
+              rdfs:range [ rdf:type owl:Restriction ;
+                           owl:onProperty :ProtocolYear ;
+                           owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                           owl:onClass <http://www.aktors.org/ontology/support#Year>
+                         ] .
+
+
+###  http://www.semanticweb.org/GAE//SameAs
+:SameAs rdf:type owl:ObjectProperty ;
+        rdfs:subPropertyOf :ModelChange ;
+        rdfs:domain [ rdf:type owl:Restriction ;
+                      owl:onProperty :SameAs ;
+                      owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                      owl:onClass <http://www.semanticweb.org/GAE/FEModel/#Part>
+                    ] ;
+        rdfs:range [ rdf:type owl:Restriction ;
+                     owl:onProperty :SameAs ;
+                     owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                     owl:onClass <http://www.semanticweb.org/GAE/FEModel/#Part>
+                   ] .
+
+
+###  http://www.semanticweb.org/GAE//SimulationBarrier
+:SimulationBarrier rdf:type owl:ObjectProperty ;
+                   rdfs:subPropertyOf :SimulationResult ;
+                   rdfs:domain [ rdf:type owl:Restriction ;
+                                 owl:onProperty :SimulationBarrier ;
+                                 owl:someValuesFrom :Simulation
+                               ] ;
+                   rdfs:range [ rdf:type owl:Restriction ;
+                                owl:onProperty :SimulationBarrier ;
+                                owl:someValuesFrom <http://www.semanticweb.org/GAE/#Barrier>
+                              ] .
+
+
+###  http://www.semanticweb.org/GAE//SimulationImpactor
+:SimulationImpactor rdf:type owl:ObjectProperty ;
+                    rdfs:subPropertyOf :SimulationResult ;
+                    rdfs:domain [ rdf:type owl:Restriction ;
+                                  owl:onProperty :SimulationImpactor ;
+                                  owl:someValuesFrom :Simulation
+                                ] ;
+                    rdfs:range [ rdf:type owl:Restriction ;
+                                 owl:onProperty :SimulationImpactor ;
+                                 owl:someValuesFrom <http://www.semanticweb.org/GAE/#Impactor>
+                               ] .
+
+
+###  http://www.semanticweb.org/GAE//SimulationModel
+:SimulationModel rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :SimulationResult ;
+                 rdfs:domain [ rdf:type owl:Restriction ;
+                               owl:onProperty :SimulationModel ;
+                               owl:allValuesFrom :Simulation
+                             ] ;
+                 rdfs:range [ rdf:type owl:Restriction ;
+                              owl:onProperty :SimulationModel ;
+                              owl:allValuesFrom <http://www.semanticweb.org/GAE/#Model>
+                            ] .
+
+
+###  http://www.semanticweb.org/GAE//SimulationResult
+:SimulationResult rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :VehicleFeModel .
+
+
+###  http://www.semanticweb.org/GAE//SimulationSimilarity
+:SimulationSimilarity rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf :SimulationResult ;
+                      rdfs:domain [ rdf:type owl:Restriction ;
+                                    owl:onProperty :SimulationSimilarity ;
+                                    owl:someValuesFrom :Simulation
+                                  ] ;
+                      rdfs:range [ rdf:type owl:Restriction ;
+                                   owl:onProperty :SimulationSimilarity ;
+                                   owl:someValuesFrom :Simulation
+                                 ] .
+
+
+###  http://www.semanticweb.org/GAE//VehicleFeModel
+:VehicleFeModel rdf:type owl:ObjectProperty ;
+                rdfs:subPropertyOf :developmentProcess ;
+                rdfs:domain [ rdf:type owl:Restriction ;
+                              owl:onProperty :VehicleFeModel ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://schema.org/Vehicle#Vehicle>
+                            ] ;
+                rdfs:range [ rdf:type owl:Restriction ;
+                             owl:onProperty :VehicleFeModel ;
+                             owl:someValuesFrom <http://www.semanticweb.org/GAE/#Model>
+                           ] .
+
+
+###  http://www.semanticweb.org/GAE//VehiclePlatform
+:VehiclePlatform rdf:type owl:ObjectProperty ;
+                 rdfs:subPropertyOf :developmentProcess ;
+                 rdfs:domain [ rdf:type owl:Restriction ;
+                               owl:onProperty :VehiclePlatform ;
+                               owl:someValuesFrom <http://schema.org/Vehicle#Vehicle>
+                             ] ;
+                 rdfs:range [ rdf:type owl:Restriction ;
+                              owl:onProperty :VehiclePlatform ;
+                              owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                              owl:onClass <http://www.semanticweb.org/GAE/#Platform>
+                            ] .
+
+
+###  http://www.semanticweb.org/GAE//VehicleSafety
+:VehicleSafety rdf:type owl:ObjectProperty ;
+               rdfs:subPropertyOf :Arribute .
+
+
+###  http://www.semanticweb.org/GAE//VehicleUpperBody
+:VehicleUpperBody rdf:type owl:ObjectProperty ;
+                  rdfs:subPropertyOf :developmentProcess ;
+                  rdfs:domain [ rdf:type owl:Restriction ;
+                                owl:onProperty :VehicleUpperBody ;
+                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                owl:onClass <http://schema.org/Vehicle#Vehicle>
+                              ] ;
+                  rdfs:range [ rdf:type owl:Restriction ;
+                               owl:onProperty :VehicleUpperBody ;
+                               owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                               owl:onClass <http://www.semanticweb.org/GAE/#UpperBody>
+                             ] .
+
+
+###  http://www.semanticweb.org/GAE//developmentProcess
+:developmentProcess rdf:type owl:ObjectProperty ;
+                    rdfs:domain [ rdf:type owl:Restriction ;
+                                  owl:onProperty :ConnectedBy ;
+                                  owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                                ] ;
+                    rdfs:range [ rdf:type owl:Restriction ;
+                                 owl:onProperty :ConnectedBy ;
+                                 owl:someValuesFrom :CommonNodes
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :ConnectedBy ;
+                                 owl:someValuesFrom :RigidBodyElement
+                               ] ,
+                               [ rdf:type owl:Restriction ;
+                                 owl:onProperty :ConnectedBy ;
+                                 owl:someValuesFrom :Weld
+                               ] .
+
+
+###  https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo
+<https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> rdf:type owl:ObjectProperty ;
+                                                                    rdfs:subPropertyOf :ModelInput ;
+                                                                    rdfs:domain [ rdf:type owl:Restriction ;
+                                                                                  owl:onProperty <https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> ;
+                                                                                  owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                                                                                ] ;
+                                                                    rdfs:range [ rdf:type owl:Restriction ;
+                                                                                 owl:onProperty <https://ci.mines-stetienne.fr/seas/SystemOntology-1.1#connectedTo> ;
+                                                                                 owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                                                                               ] .
+
+
+###  https://dbpedia.org/ontology/productionStartYear
+<https://dbpedia.org/ontology/productionStartYear> rdf:type owl:ObjectProperty ;
+                                                   rdfs:subPropertyOf :developmentProcess ;
+                                                   rdfs:domain [ rdf:type owl:Restriction ;
+                                                                 owl:onProperty <https://dbpedia.org/ontology/productionStartYear> ;
+                                                                 owl:someValuesFrom <http://schema.org/Vehicle#Vehicle>
+                                                               ] ;
+                                                   rdfs:range [ rdf:type owl:Restriction ;
+                                                                owl:onProperty owl:topObjectProperty ;
+                                                                owl:qualifiedCardinality "1"^^xsd:nonNegativeInteger ;
+                                                                owl:onClass <http://www.aktors.org/ontology/support#Year>
+                                                              ] .
+
+
+###  https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo
+<https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> rdf:type owl:ObjectProperty ;
+                                                                           rdfs:subPropertyOf :ModelInput ,
+                                                                                              :VehicleSafety ;
+                                                                           rdfs:domain [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                         owl:someValuesFrom <http://www.semanticweb.org/GAE/#Barrier>
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                         owl:someValuesFrom <http://www.semanticweb.org/GAE/#Element>
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                         owl:someValuesFrom <http://www.semanticweb.org/GAE/#Impactor>
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                         owl:someValuesFrom <http://www.semanticweb.org/GAE/#Node>
+                                                                                       ] ,
+                                                                                       [ rdf:type owl:Restriction ;
+                                                                                         owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                         owl:someValuesFrom <http://www.semanticweb.org/GAE/FEModel/#Part>
+                                                                                       ] ;
+                                                                           rdfs:range [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                        owl:someValuesFrom <http://ontology.ethereal.cz/irao/Protocol>
+                                                                                      ] ,
+                                                                                      [ rdf:type owl:Restriction ;
+                                                                                        owl:onProperty <https://projects.ics.forth.gr/isl/oae/specification/index.html#belongsTo> ;
+                                                                                        owl:allValuesFrom [ owl:intersectionOf ( <http://www.semanticweb.org/GAE/#Model>
+                                                                                                                                 [ rdf:type owl:Class ;
+                                                                                                                                   owl:unionOf ( <http://www.semanticweb.org/GAE/#Platform>
+                                                                                                                                                 <http://www.semanticweb.org/GAE/#UpperBody>
+                                                                                                                                               )
+                                                                                                                                 ]
+                                                                                                                               ) ;
+                                                                                                            rdf:type owl:Class
+                                                                                                          ]
+                                                                                      ] .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://ontology.ethereal.cz/irao/Protocol
+<http://ontology.ethereal.cz/irao/Protocol> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://www.semanticweb.org/GAE/#Safety> .
+
+
+###  http://schema.org/Vehicle#Vehicle
+<http://schema.org/Vehicle#Vehicle> rdf:type owl:Class .
+
+
+###  http://www.aktors.org/ontology/support#Year
+<http://www.aktors.org/ontology/support#Year> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://schema.org/Vehicle#Vehicle> .
+
+
+###  http://www.semanticweb.org/GAE/#Arcitecture
+<http://www.semanticweb.org/GAE/#Arcitecture> rdf:type owl:Class ;
+                                              rdfs:subClassOf <http://schema.org/Vehicle#Vehicle> .
+
+
+###  http://www.semanticweb.org/GAE/#Attribute
+<http://www.semanticweb.org/GAE/#Attribute> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://schema.org/Vehicle#Vehicle> .
+
+
+###  http://www.semanticweb.org/GAE/#Barrier
+<http://www.semanticweb.org/GAE/#Barrier> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://www.semanticweb.org/GAE/#Safety> .
+
+
+###  http://www.semanticweb.org/GAE/#Change
+<http://www.semanticweb.org/GAE/#Change> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://www.semanticweb.org/GAE/#Fe> .
+
+
+###  http://www.semanticweb.org/GAE/#Connection
+<http://www.semanticweb.org/GAE/#Connection> rdf:type owl:Class ;
+                                             rdfs:subClassOf <http://www.semanticweb.org/GAE/#Model> .
+
+
+###  http://www.semanticweb.org/GAE/#Design
+<http://www.semanticweb.org/GAE/#Design> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://www.semanticweb.org/GAE/#MachineLearning> .
+
+
+###  http://www.semanticweb.org/GAE/#Element
+<http://www.semanticweb.org/GAE/#Element> rdf:type owl:Class ;
+                                          rdfs:subClassOf <http://www.semanticweb.org/GAE/FEModel/#Part> .
+
+
+###  http://www.semanticweb.org/GAE/#Fe
+<http://www.semanticweb.org/GAE/#Fe> rdf:type owl:Class ;
+                                     rdfs:subClassOf <http://schema.org/Vehicle#Vehicle> .
+
+
+###  http://www.semanticweb.org/GAE/#Group
+<http://www.semanticweb.org/GAE/#Group> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://www.semanticweb.org/GAE/#MachineLearning> .
+
+
+###  http://www.semanticweb.org/GAE/#Impactor
+<http://www.semanticweb.org/GAE/#Impactor> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.semanticweb.org/GAE/#Safety> .
+
+
+###  http://www.semanticweb.org/GAE/#MachineLearning
+<http://www.semanticweb.org/GAE/#MachineLearning> rdf:type owl:Class ;
+                                                  rdfs:subClassOf <http://www.semanticweb.org/GAE/#Fe> .
+
+
+###  http://www.semanticweb.org/GAE/#Model
+<http://www.semanticweb.org/GAE/#Model> rdf:type owl:Class ;
+                                        rdfs:subClassOf <http://www.semanticweb.org/GAE/#Fe> .
+
+
+###  http://www.semanticweb.org/GAE/#Node
+<http://www.semanticweb.org/GAE/#Node> rdf:type owl:Class ;
+                                       rdfs:subClassOf <http://www.semanticweb.org/GAE/#Element> .
+
+
+###  http://www.semanticweb.org/GAE/#Platform
+<http://www.semanticweb.org/GAE/#Platform> rdf:type owl:Class ;
+                                           rdfs:subClassOf <http://www.semanticweb.org/GAE/#Arcitecture> .
+
+
+###  http://www.semanticweb.org/GAE/#Safety
+<http://www.semanticweb.org/GAE/#Safety> rdf:type owl:Class ;
+                                         rdfs:subClassOf <http://www.semanticweb.org/GAE/#Attribute> .
+
+
+###  http://www.semanticweb.org/GAE/#UpperBody
+<http://www.semanticweb.org/GAE/#UpperBody> rdf:type owl:Class ;
+                                            rdfs:subClassOf <http://www.semanticweb.org/GAE/#Arcitecture> .
+
+
+###  http://www.semanticweb.org/GAE//Behavior
+:Behavior rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.semanticweb.org/GAE/#MachineLearning> .
+
+
+###  http://www.semanticweb.org/GAE//CommonNodes
+:CommonNodes rdf:type owl:Class ;
+             rdfs:subClassOf <http://www.semanticweb.org/GAE/#Connection> .
+
+
+###  http://www.semanticweb.org/GAE//RigidBodyElement
+:RigidBodyElement rdf:type owl:Class ;
+                  rdfs:subClassOf <http://www.semanticweb.org/GAE/#Connection> .
+
+
+###  http://www.semanticweb.org/GAE//Semantic
+:Semantic rdf:type owl:Class ;
+          rdfs:subClassOf <http://www.semanticweb.org/GAE/FEModel/#Part> .
+
+
+###  http://www.semanticweb.org/GAE//Simulation
+:Simulation rdf:type owl:Class ;
+            rdfs:subClassOf <http://www.semanticweb.org/GAE/#Fe> .
+
+
+###  http://www.semanticweb.org/GAE//Weld
+:Weld rdf:type owl:Class ;
+      rdfs:subClassOf <http://www.semanticweb.org/GAE/#Connection> .
+
+
+###  http://www.semanticweb.org/GAE/FEModel/#Part
+<http://www.semanticweb.org/GAE/FEModel/#Part> rdf:type owl:Class ;
+                                               rdfs:subClassOf <http://www.semanticweb.org/GAE/#Model> .
+
+
+###  Generated by the OWL API (version 4.5.25.2023-02-15T19:15:49Z) https://github.com/owlcs/owlapi
