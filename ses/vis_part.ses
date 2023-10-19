@@ -1,0 +1,63 @@
+window active "MetaPost"
+window size 500, 500
+$----------------------------------------------------
+$	set variables
+$----------------------------------------------------
+$read geom Dyna3d S:/nobackup/safety/projects/mma/3_stv0/front/runs/cm1e_stv0_001_fp3__001/cm1e_stv0_001_fp3__001.fz
+$read dis Dyna3d S:/nobackup/safety/projects/mma/3_stv0/front/runs/cm1e_stv0_001_fp3__001/cm1e_stv0_001_fp3__001.fz 5/10/15/20/25/30/33 Displacements
+$options var add runName cm1e_stv0_001_fp3__001
+$options var add pidList 18620080,18620040,10020420,30221010,55131390,30221110,20020270,19520070,19520130,10020870,10020830,10022010,14320230,10021360,55131370,10020880,10020980,76820860,10020410,55131310,10021700,58020040,10020950,18620070
+$options var add pid 10020870
+
+options var add uLine _
+options var add runOptSes 1
+$option var add st 33
+$opt var add savePath U:\kg01\src\cevt_vis\
+$----------------------------------------------------
+$	save option
+$----------------------------------------------------
+write options saveworkspace disable
+options title off
+grstyle feature off
+$----------------------------------------------------
+$        set visible
+$----------------------------------------------------
+era all
+
+add pid $pidList
+style transparency pid 0.1 $pidList
+style transparency pid 1 $pid
+
+
+options var add pos iso
+view default $pos
+write png $savePath/$runName$uLine$pid$uLine$pos.png
+
+
+options var add pos top
+view default $pos
+write png $savePath/$runName$uLine$pid$uLine$pos.png
+
+era all
+add pid $pid
+options var add pos iso
+view default $pos
+options var add pos iso0
+write png $savePath/$runName$uLine$pid$uLine$pos.png
+
+
+
+$---------------------------------------------------------------------
+$      back to curent statte
+$---------------------------------------------------------------------
+
+style transparency pid 1 $pidList
+add all
+
+view default options clipfocus disable
+style pident enabled pid
+model active all
+annotation del all
+options title on
+view default top
+options axis off

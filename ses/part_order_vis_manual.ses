@@ -1,0 +1,18 @@
+$read geom Dyna3d /cevt/cae/backup/safety/users/anahita.pakiman1/mma/3_m1/front/runs/cm1e_m1_003_fp3__001/cm1e_m1_003_fp3__001.fz
+
+era all 
+options var add parts 10020040,55131040,10022100,10021190,30220280
+add pid $parts
+
+identify part $parts 
+style transparency pid 0.5  $parts
+
+
+$read geom Dyna3d /cevt/cae/backup/safety/users/anahita.pakiman1/mma/3_m1/front/runs/cm1e_m1_203_fo5__001/cm1e_m1_203_fo5__001.fz
+
+era all 
+options var add parts 10021870,30220140,30220280,10021190,58020050
+add pid $parts
+
+identify part $parts 
+style transparency pid 0.5  $parts

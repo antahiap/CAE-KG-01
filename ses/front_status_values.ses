@@ -1,0 +1,69 @@
+xyplot create status_values
+window active status_values
+$----------------------------------------------------
+$	set variables
+$----------------------------------------------------
+opt var add name "status_values"
+options var add accNode  "all"
+$----------------------------------------------------
+$	set variables for debugung
+$----------------------------------------------------
+$options var add runName Initial
+$options var add my_path "/home/ndv/data/Nissan_Rogue_2020_CCSA_public/Output/Initial/"
+$options var add savePath "/home/apakiman/csv"
+
+$----------------------------------------------------
+$	set variables
+$----------------------------------------------------
+opt var add endTime .12
+options var add uLine _
+
+#### creat page
+xyplot create $name
+window size 1024,576
+
+window active "$name"
+$----------------------------------------------------
+$	save option
+$----------------------------------------------------
+write options saveworkspace disable
+$----------------------------------------------------
+xyplot read lsdyna "$name" "$my_path/binout*" nodout-Node $accNode Magnitude_of_acceleration_(ma)
+
+xyplot axisoptions ylabel set "$name" 0 "Acceleration"
+xyplot axisoptions yaxis add "$name" 0
+
+unitsystem apply mmks
+xyplot curve rfunction cfc060 "$name" 1-7
+
+
+options var add left_rear_sill `w[$name]c1.y[y=max]`
+options var add right_rear_sill `w[$name]c2.y[y=max]`
+options var add cg_global `w[$name]c3.y[y=max]`
+options var add cg_local `w[$name]c4.y[y=max]`
+options var add engine_top_local `w[$name]c5.y[y=max]`
+options var add left_rear_seat_local `w[$name]c6.y[y=max]`
+options var add right_rear_seat_local `w[$name]c7.y[y=max]`
+
+
+
+xyplot output file "$name" "$savePath/left_rear_sill$uLine$runName.csv" 1
+xyplot output file "$name" "$savePath/right_rear_sill$uLine$runName.csv" 2
+xyplot output file "$name" "$savePath/cg_global$uLine$runName.csv" 3
+xyplot output file "$name" "$savePath/cg_local$uLine$runName.csv" 4
+xyplot output file "$name" "$savePath/engine_top_local$uLine$runName.csv" 5
+xyplot output file "$name" "$savePath/left_rear_seat_local$uLine$runName.csv" 6
+xyplot output file "$name" "$savePath/right_rear_seat_local$uLine$runName.csv" 7
+$
+
+$----------------------------------------------------
+$	Output variables
+$----------------------------------------------------
+options var fileprintmode 1
+options var fileprintcols 2
+options var fileprintlist "left_rear_sill,right_rear_sill,cg_global,cg_local,engine_top_local,left_rear_sill_local,right_rear_sill_local" "$savePath/statusParameter$uLine$runName.csv"
+
+$---------------------------------------------------------------------
+$      back to curent state
+$---------------------------------------------------------------------
+$	window delete "$name"

@@ -1,0 +1,48 @@
+
+options var add my_path  "/home/apakiman/leo1/Projects/carGraph/runs/NISSAN/full_front/"
+
+
+options var add sim_a "NISSAN_ff_0004"
+options var add sim_b "NISSAN_ff_0011"
+options var add sim_c "NISSAN_ff_0014"
+options var add sim_d "NISSAN_ff_0015"
+options var add sim_e "NISSAN_ff_0016"
+options var add sim_f "NISSAN_ff_0017"
+
+model active empty
+read geom Dyna3d "$my_path/$sim_a/d3plot"
+1:read dis Dyna3d "$my_path/$sim_a/d3plot" all Displacements
+1:read onlyfun Dyna3d "$my_path/$sim_a/d3plot" all Stresses,VonMises,MaxofInOutMid
+
+model active empty
+read geom Dyna3d "$my_path/$sim_b/d3plot"
+2:read dis Dyna3d "$my_path/$sim_b/d3plot" all Displacements
+2:read onlyfun Dyna3d "$my_path/$sim_b/d3plot" all Stresses,VonMises,MaxofInOutMid
+
+model active empty
+read geom Dyna3d "$my_path/$sim_c/d3plot"
+3:read dis Dyna3d "$my_path/$sim_c/d3plot" all Displacements
+3:read onlyfun Dyna3d "$my_path/$sim_c/d3plot" all Stresses,VonMises,MaxofInOutMid
+
+model active empty
+read geom Dyna3d "$my_path/$sim_d/d3plot"
+4:read dis Dyna3d "$my_path/$sim_d/d3plot" all Displacements
+4:read onlyfun Dyna3d "$my_path/$sim_d/d3plot" all Stresses,VonMises,MaxofInOutMid
+
+model active empty
+read geom Dyna3d "$my_path/$sim_e/d3plot"
+5:read dis Dyna3d "$my_path/$sim_e/d3plot" all Displacements
+5:read onlyfun Dyna3d "$my_path/$sim_e/d3plot" all Stresses,VonMises,MaxofInOutMid
+
+model active empty
+read geom Dyna3d "$my_path/$sim_f/d3plot"
+6:read dis Dyna3d "$my_path/$sim_f/d3plot" all Displacements
+6:read onlyfun Dyna3d "$my_path/$sim_f/d3plot" all Stresses,VonMises,MaxofInOutMid
+
+
+model active all
+
+era all
+
+add pid Parts: 2000097-2000100/2000621/2000656-2000657/2000667/2000669-2000670/2000730/2000808-2000810/2000822/2000824/2000838-2000839/2000841/2000845-2000849/2000869-2000874/2000877-2000878/2000897/2000915/2000923/2000929/2000932/2000934-2000935/2000937-2000938/2000941-2000942/2000951-2000954/2000961 
+view fo3 2060119, 2059796, 10788
