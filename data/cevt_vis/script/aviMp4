@@ -1,0 +1,8 @@
+#!/bin/bash --login
+module load ffmpeg 
+echo "$1/*.avi"
+for item in $(find -name '*.avi');do
+    out=$(echo $item|sed 's/avi/mp4/')
+	ffmpeg -i ${item} -c:v h264 -y ${out} # && rm -r ${item} 2>/dev/null
+rm $item
+done

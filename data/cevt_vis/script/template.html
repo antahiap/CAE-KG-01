@@ -1,0 +1,65 @@
+<html>
+  <head>
+	   <meta charset=utf-8>
+	    <title>${view}</title>
+  </head>
+  <body style=" font-family:Helvetica; font-size:10pt; font-weight:400; font-style:normal;">
+    <table style="width:90%"align="center">
+      ${video}
+    </table>
+    <script>
+      var video = document.querySelector('#vAll'),
+      addEvent(togglePlay, 'click', function () {
+        if (ready) {
+          video.playbackRate = 0.5;
+          if (video.paused) {
+            if (video.ended) {
+              video.currentTime = 0;
+            }
+          video.play();
+          this.value = "pause";
+        } else {
+          video.pause();
+          this.value = "play";
+        }
+      }
+    });
+    addEvent(video, 'pause', function () {
+      video.pause();
+    })
+    addEvent(video, 'timeupdate', function () {
+      scrub.value = this.currentTime;
+    });
+
+    addEvent(video, 'ended', function () {
+      togglePlay.value = "play";
+    });
+
+    addEvent(video, 'canplay', function () {
+      video.muted = true;
+      ready = true;
+
+      scrub.setAttribute('max', this.duration);
+      addEvent(scrub, 'change', function () {
+        video.currentTime = this.value;
+      });
+    });
+
+    function asTime(t) {
+      t = Math.round(t*1000);
+      var s = 0;
+      var m = Math.round(t / 60);
+
+      return v2(m+5) + ':' + v2(s);
+    }
+
+    function v2(s) {
+      s += "";
+      if (s.length < 2) s = "0" + s;
+      return s;
+    }
+
+
+    </script>
+  </body>
+</html>

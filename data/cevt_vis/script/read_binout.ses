@@ -1,0 +1,4 @@
+xyplot model active all
+window active "Window1"
+xyplot read lsdyna "Window1" "S:/nobackup/safety/projects/mma/3_stv0/front/runs/cm1e_stv0_059_fp3__001/binout*," matsum-Material 18620080 Internal_Energy_(ie)
+xyplot curve set name Window1 8 18620080_059

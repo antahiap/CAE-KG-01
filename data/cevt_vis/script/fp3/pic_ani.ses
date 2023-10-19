@@ -1,0 +1,92 @@
+window active "MetaPost"
+window size 600,600
+$----------------------------------------------------
+$	set variables
+$----------------------------------------------------
+$read geom Dyna3d S:/nobackup/safety/projects/mma/3_stv0/front/runs/cm1e_stv0_001_fp3__001/cm1e_stv0_001_fp3__001.fz
+$read dis Dyna3d S:/nobackup/safety/projects/mma/3_stv0/front/runs/cm1e_stv0_001_fp3__001/cm1e_stv0_001_fp3__001.fz 5/10/15/20/25/30/33 Displacements
+$options var add runName cm1e_stv0_001_fp3__001
+
+options var add count 01
+options var add uLine _
+options var add runOptSes 1
+$options var add aniOn 0
+$top\right\front
+$options var add pos right
+$option var add st 33
+$opt var add savePath U:\kg01\src\cevt_cypher\test
+$----------------------------------------------------
+$	save option
+$----------------------------------------------------
+write options saveworkspace disable
+options title off
+$----------------------------------------------------
+$        set visible
+$----------------------------------------------------
+era all
+add pid $pidList
+$add pid 18620080,18620040,10020420,30221010,55131390,30221110,20020270,19520070,19520130,10020870,10020830,10022010,14320230,10021360,55131370,10020880,10020980,76820860,10020410,55131310,10021700,58020040,10020950,18620070
+$add pid 10020100,10020830,55132540,55132410
+$add pid   18620110,18620090,18620080,18620120,55021060,55021040,18620070,18620130,10020210,10021410,10021350,10022010,10020420,10021520,10020830,10020100,55132410,55132540,18620040,55132510,55131400,55131390,55132420,55131230
+$----------------------------------------------------
+$         top_view
+$----------------------------------------------------
+view default $pos
+
+	$-----------------------------
+	$	annotation
+	$-----------------------------
+	window active "MetaPost"
+	annotation select none
+	annotation select none
+	annotation add 1 "Empty Annotation"
+	annotation border 1 color Black
+	annotation text 1 text "\$runName    TIME: \$CUR_TIME"
+	annotation modelvisibility 1 on
+	annotation background 1 color manual White
+	annotation background 1 transp 0.990000
+	annotation text 1 font "Century Schoolbook L,18,-1,5,75,0,0,0,0,0"
+	annotation position 1 setxy 0.5 0.96
+	annotation text 1 precision 2
+	annotation select none
+
+#:start
+#if $aniOn == 1
+	write options outputsize activewindow
+	animation movie buffer disk
+	record avi compression jpeg
+	record avi fps 20
+	record avi start $savePath/$runName$uLine$pos.avi
+	animation last
+	animation first
+	animation fo1
+	record avi stop
+	options offscreen hardware disable
+#endif
+#:end
+
+#:start
+#if $aniOn == 0
+	0:options state variable "serial=$st"
+	view default $pos
+	write png $savePath/$runName$uLine$pos$uLine$st.png
+#endif
+#:end
+
+$---------------------------------------------------------------------
+$      back to curent statte
+$---------------------------------------------------------------------
+#:start
+#if $runOptSes != 2
+	view default options clipfocus disable
+	style pident enabled pid
+	model active all
+	annotation del all
+	add all
+	animation first
+	options title on
+	view default top
+	options axis off
+	animation first
+#endif
+#:en

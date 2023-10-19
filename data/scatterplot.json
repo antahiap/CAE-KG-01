@@ -1,0 +1,44 @@
+{
+  "points": [
+    {
+      "positions": [
+        {
+          "pos": 45.5,
+          "label": ""
+        },
+        {
+          "pos": 67.6,
+          "label": ""
+        },
+        {
+          "pos": 48.6,
+          "label": ""
+        }
+      ],
+      "type": "simulation",
+      "label": "svt736",
+      "image": [
+        { "path": "dgdgd/etet/7dh.png" },
+        { "path": "dgdgd/etet/7dh.png" },
+        { "path": "dgdgd/etet/7dh.png" }
+      ],
+      "videos": [
+        { "path": "sdhkjhkgf/dgdg.mp4" },
+        { "path": "sdhkjhkgf/dgdg.mp4" },
+        { "path": "sdhkjhkgf/dgdg.mp4" }
+      ],
+
+      "data": {
+        "pid": 200056,
+        "thickness": 2.1
+      },
+      "method": {
+        "name": "pid_energy",
+        "variables": [
+          { "name": "IE", "val": 0.2 },
+          { "name": "t0", "val": 0.2 }
+        ]
+      }
+    }
+  ]
+}
