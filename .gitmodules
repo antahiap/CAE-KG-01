@@ -1,5 +1,5 @@
-[submodule "documents/PhD-Publication"]
-	path = documents/PhD-Publication
+[submodule "documents/PhD-Publications"]
+	path = documents/PhD-Publications
 	url = https://github.com/antahiap/PhD-Publications.git
 [submodule "src/nrg_mdl"]
 	path = src/nrg_mdl
