@@ -1,0 +1,18 @@
+packages: [
+  "busy-signal"
+  "compare-files"
+  "data-explorer"
+  "Hydrogen"
+  "hydrogen-auth"
+  "hydrogen-launcher"
+  "hydrogen-python"
+  "ide-json"
+  "ide-python"
+  "intentions"
+  "linter"
+  "linter-ui-default"
+  "package-sync"
+  "python-autopep8"
+  "sync-settings"
+  "vim-mode"
+]
